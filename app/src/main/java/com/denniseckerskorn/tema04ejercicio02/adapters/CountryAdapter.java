@@ -1,5 +1,7 @@
 package com.denniseckerskorn.tema04ejercicio02.adapters;
 
+import android.text.Layout;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
@@ -23,17 +25,19 @@ public class CountryAdapter extends RecyclerView.Adapter<CountryAdapter.CountryV
     @NonNull
     @Override
     public CountryViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        return null;
+        View itemView = LayoutInflater.from(parent.getContext()).inflate(R.layout.listitem_country, parent, false);
+        return new CountryViewHolder(itemView);
     }
 
     @Override
     public void onBindViewHolder(@NonNull CountryViewHolder holder, int position) {
-
+        Country country = countries.get(position);
+        holder.bindCountry(country);
     }
 
     @Override
     public int getItemCount() {
-        return 0;
+        return countries.size();
     }
 
     public class CountryViewHolder extends RecyclerView.ViewHolder {
