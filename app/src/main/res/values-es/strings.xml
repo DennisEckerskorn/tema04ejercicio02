@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">tema04ejercicio01</string>
+    <string name="tvCapital">Capital:</string>
+    <string name="tvPopulation">Población:</string>
+    <string name="tvCountryName">País:</string>
+</resources>
