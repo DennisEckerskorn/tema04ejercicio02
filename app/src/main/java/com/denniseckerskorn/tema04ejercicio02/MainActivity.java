@@ -25,9 +25,6 @@ import java.util.List;
 import javax.xml.parsers.ParserConfigurationException;
 
 public class MainActivity extends AppCompatActivity implements OnItemClickListener {
-    private List<Country> countries;
-    private RecyclerView rvList;
-    private DomParser parser;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,10 +32,10 @@ public class MainActivity extends AppCompatActivity implements OnItemClickListen
         setContentView(R.layout.activity_main);
 
         try {
-            parser = new DomParser();
+            DomParser parser = new DomParser();
             parser.loadFile(this, R.raw.countries);
-            countries = parser.getCountries("country", this);
-            rvList = findViewById(R.id.rvList);
+            List<Country> countries = parser.getCountries("country", this);
+            RecyclerView rvList = findViewById(R.id.rvList);
             rvList.setHasFixedSize(true);
             rvList.setAdapter(new CountryAdapter(countries, this));
             rvList.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false));
@@ -46,7 +43,6 @@ public class MainActivity extends AppCompatActivity implements OnItemClickListen
         } catch (ParserConfigurationException | IOException | SAXException e) {
             e.printStackTrace();
             Toast.makeText(this, "Error al cargar los datos de los países.", Toast.LENGTH_SHORT).show();
-
         }
     }
 
