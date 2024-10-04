@@ -17,8 +17,8 @@ import com.denniseckerskorn.tema04ejercicio02.models.OnItemClickListener;
 import java.util.List;
 
 public class CountryAdapter extends RecyclerView.Adapter<CountryAdapter.CountryViewHolder> {
-    private List<Country> countries;
-    private OnItemClickListener listener;
+    private final List<Country> countries;
+    private final OnItemClickListener listener;
 
     public CountryAdapter(List<Country> countries, OnItemClickListener listener) {
         this.countries = countries;
@@ -44,10 +44,10 @@ public class CountryAdapter extends RecyclerView.Adapter<CountryAdapter.CountryV
     }
 
     public class CountryViewHolder extends RecyclerView.ViewHolder {
-        private ImageView ivFlag;
-        private TextView tvCountryName;
-        private TextView tvCapital;
-        private TextView tvPopulation;
+        private final ImageView ivFlag;
+        private final TextView tvCountryName;
+        private final TextView tvCapital;
+        private final TextView tvPopulation;
 
         public CountryViewHolder(@NonNull View itemView) {
             super(itemView);
