@@ -58,10 +58,17 @@ public class CountryAdapter extends RecyclerView.Adapter<CountryAdapter.CountryV
         }
 
         public void bindCountry(Country country, OnItemClickListener listener) {
-            ivFlag.setImageResource(country.getFlagResource()); //Todo: Puede ser nulo, arreglar
-            tvCountryName.setText(country.getCountryName());
-            tvCapital.setText(country.getCapital());
-            tvPopulation.setText(String.valueOf(country.getPopulation()));
+            if (country != null) {
+                if (country.getFlagResource() != 0) {
+                    ivFlag.setVisibility(View.VISIBLE);
+                    ivFlag.setImageResource(country.getFlagResource()); //Todo: Puede ser nulo, arreglar
+                } else {
+                    ivFlag.setVisibility(View.GONE);
+                }
+                tvCountryName.setText(country.getCountryName());
+                tvCapital.setText(country.getCapital());
+                tvPopulation.setText(String.valueOf(country.getPopulation()));
+            }
 
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override

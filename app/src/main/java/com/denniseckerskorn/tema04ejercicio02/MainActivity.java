@@ -1,6 +1,7 @@
 package com.denniseckerskorn.tema04ejercicio02;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
@@ -21,6 +22,7 @@ import org.xml.sax.SAXException;
 
 import java.io.IOException;
 import java.util.List;
+import java.util.Objects;
 
 import javax.xml.parsers.ParserConfigurationException;
 
@@ -41,7 +43,7 @@ public class MainActivity extends AppCompatActivity implements OnItemClickListen
             rvList.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false));
             //rvList.setLayoutManager(new GridLayoutManager(this, 2));
         } catch (ParserConfigurationException | IOException | SAXException e) {
-            e.printStackTrace();
+            Log.e(getClass().getName(), Objects.requireNonNull(e.getMessage()));
             Toast.makeText(this, "Error al cargar los datos de los países.", Toast.LENGTH_SHORT).show();
         }
     }
