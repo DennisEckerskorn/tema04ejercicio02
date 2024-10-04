@@ -8,6 +8,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
+import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -41,8 +42,7 @@ public class MainActivity extends AppCompatActivity implements OnItemClickListen
             rvList.setHasFixedSize(true);
             rvList.setAdapter(new CountryAdapter(countries, this));
             rvList.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false));
-
-
+            //rvList.setLayoutManager(new GridLayoutManager(this, 2));
         } catch (ParserConfigurationException | IOException | SAXException e) {
             e.printStackTrace();
             Toast.makeText(this, "Error al cargar los datos de los países.", Toast.LENGTH_SHORT).show();
