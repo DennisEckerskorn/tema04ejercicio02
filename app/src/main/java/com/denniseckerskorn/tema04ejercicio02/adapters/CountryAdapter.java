@@ -12,14 +12,17 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.denniseckerskorn.tema04ejercicio02.R;
 import com.denniseckerskorn.tema04ejercicio02.models.Country;
+import com.denniseckerskorn.tema04ejercicio02.models.OnItemClickListener;
 
 import java.util.List;
 
 public class CountryAdapter extends RecyclerView.Adapter<CountryAdapter.CountryViewHolder> {
     private List<Country> countries;
+    private OnItemClickListener listener;
 
-    public CountryAdapter(List<Country> countries) {
+    public CountryAdapter(List<Country> countries, OnItemClickListener listener) {
         this.countries = countries;
+        this.listener = listener;
     }
 
     @NonNull
@@ -32,7 +35,7 @@ public class CountryAdapter extends RecyclerView.Adapter<CountryAdapter.CountryV
     @Override
     public void onBindViewHolder(@NonNull CountryViewHolder holder, int position) {
         Country country = countries.get(position);
-        holder.bindCountry(country);
+        holder.bindCountry(country, listener);
     }
 
     @Override
@@ -54,11 +57,18 @@ public class CountryAdapter extends RecyclerView.Adapter<CountryAdapter.CountryV
             tvPopulation = itemView.findViewById(R.id.tvPopulation);
         }
 
-        public void bindCountry(Country country) {
+        public void bindCountry(Country country, OnItemClickListener listener) {
             ivFlag.setImageResource(country.getFlagResource());
             tvCountryName.setText(country.getCountryName());
             tvCapital.setText(country.getCapital());
             tvPopulation.setText(String.valueOf(country.getPopulation()));
+
+            itemView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    listener.onItemClick(country);
+                }
+            });
         }
     }
 }
